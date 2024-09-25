@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+.shop {
+    width: 1300px;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 40px;
+}
+.shop__sidebar {
+    width: 27%;
+    height: 85vh;
+    border: 2px solid rgba(1,1,1,0.3);
+    padding: 40px;
+}
+.shop__cards {
+    width: 73%;
+    height: 85vh;
+    border: 2px solid rgba(1,1,1,0.3);
+    gap: 13px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.shop__sidebar h3 {
+    font-family: sans-serif;
+    color: #444;
+    font-weight: 500;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.shop__sidebar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+}
+.shop__sidebar ul li a {
+    color: #444;
+    font-family: sans-serif;
+    text-decoration: none;
+    display: inline-block; 
+    font-size: 19px;
+}
+.card {
+    width: 23%;
+    height: 250px;
+    border: 2px solid rgba(1,1,1,0.3);
+    padding: 20px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-direction: column;
+}
+.card p {
+    font-family: sans-serif;
+    font-weight: 500;
+    margin: 10px;
+}
+.card:nth-child(odd) {
+    border-color: red;
+}
+.card:nth-child(even) {
+    border-color: blue;
+}
+.card a {
+    font-size: 18px;
+    font-family: sans-serif;
+    text-align: center;
+    text-decoration: none;
+    color: #555;
+    display: inline-block;
+    line-height: 1.5;
+}
+.narxlar_filter {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+.narxlar_filter input {
+    width: 100px;
+    height: 30px;
+    border: 1px solid rgba(1,1,1,0.3);
+    padding: 5px;
+    color: #444;
+    outline-color: blue;
+    outline-width: 4px;
+}
+form button {
+    padding: 8px 20px;
+    border: none;
+    display: inline-block;
+    margin-top: 10px;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 19px;
+    width: 83%;
+}
+form input[type=search] {
+    padding: 5px 10px;
+    margin-top: 10px;
+    font-family: sans-serif;
+    color: #333;
+    outline: none;
+    width: 83%;
+}
+.filterUPDOWN {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+.filterUPDOWN a {
+    text-decoration: none;
+    color: #444;
+}
+.filterUPDOWN i {
+    font-size: 30px;
+}

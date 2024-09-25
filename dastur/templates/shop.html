@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping page</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <div class="shop">
+        <div class="shop__sidebar">
+            <h3>Bo'limlar (Categoriyalar)</h3>
+            <ul>
+                <li>
+                    <a href="/shop/">Barchasi</a>
+                </li>
+                {% for category in categories %}
+                <li>
+                    <a href="?category={{ category.nom }}">{{ category.nom }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            <form method="get">
+                <div class="narxlar_filter">
+                    <!-- less than -- dan kam -->
+                    <!-- greater than -- dan ko'p -->
+                    <input type="number" name="gte" placeholder="0.00">
+                    <input type="number" name="lte" placeholder="0.00">
+                </div>
+                <button type="submit">Filter</button>
+            </form>
+            <form method="get">
+                <input type="search" name="search" placeholder="Search">
+            </form>
+            <!-- ascending -->
+            <!-- descending -->
+            <div class="filterUPDOWN">
+                <a href="?order=ascending">
+                    <i class="fa-solid fa-arrow-up-9-1"></i>
+                </a>
+                <a href="?order=descending">
+                    <i class="fa-solid fa-arrow-down-9-1"></i>
+                </a>
+            </div>
+        </div>
+        <div class="shop__cards">
+            {% if maxsulotlar %}
+            {% for maxsulot in maxsulotlar %}
+            <div class="card">
+                <a href="#">{{ maxsulot.nom }}</a>
+                <p>{{ maxsulot.narx }} som</p>
+            </div>
+            {% endfor %}
+            {% else %}
+            <h2>{{ category }} maxsuloti mavjud emas</h2>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>

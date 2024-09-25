@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        font-family: sans-serif;
+    }
+    th, td {
+        padding: 15px;
+    }
+</style>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Brend</th>
+                <th>Narx</th>
+                <th>Rang</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in cars %}
+            <tr>
+                <td>{{ x.id }}</td>
+                <td>{{ x.nom }}</td>
+                <td>{{ x.brend }}</td>
+                <td>${{ x.narx }}</td>
+                <td>{{ x.rang }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

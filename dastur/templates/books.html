@@ -1,0 +1,140 @@
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<style>
+    * {
+        margin: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+    }
+    .wrapper {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .wrapper-search {
+        width: 100%;
+        height: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .wrapper-search-center {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        border-radius: 20px;
+    }
+
+    .wrapper-search-center i {
+        font-size: 23px;
+        
+    }
+
+    .wrapper-search-center input {
+        width: 20%;
+        height: 50px;
+        border-radius: 10px;
+        padding: 10px 15px;
+        background-color: #999;
+        border: none;
+        outline: none;
+        color: #fff;
+    }
+
+    .wrapper-search-center input::placeholder {
+        font-size: 15px;
+        color: #fff;
+    }
+
+    .wrapper-search-center button {
+        padding: 15px 25px;
+        border: none;
+        border: 1px solid #999;
+        background-color: none;
+        border-radius: 10px;
+        transition: 0.5s all ease;
+    }
+
+    .wrapper-search-center button:active {
+        transform: scale(0.9);
+    }
+
+    .wrapper-book-cards {
+        width: 100%;
+        height: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .wrapper-book-cards-card {
+        width: 350px;
+        height: 420px;
+        background-color: #999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 5px;
+        border-radius: 10px;
+    }
+
+    .wrapper-book-cards-card img  {
+        width: 270px;
+        height: 270px;
+    }
+
+    .wrapper-book-cards-card-txt {
+        width: 300px;
+        height: auto;
+        padding: 10px 15px;
+        line-height: 1.5;
+    }
+</style>
+
+<div class="wrapper">
+    <div class="wrapper-search">
+        <form method="get" class="wrapper-search-center">
+            {% csrf_token %}
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" name="search"  placeholder="Nomi bilan qidirish">
+            <input type="search" name="ovner"  placeholder="Yozuvchi">
+            <input type="number" name="narx"  placeholder="Narx">
+            <input type="text" name="janr"  placeholder="Janr">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div class="wrapper-book-cards">
+        {% if kitoblar %}
+        {% for book in kitoblar %}
+        <div class="wrapper-book-cards-card">
+            <img src="{{ book.img.url }}" alt="">
+            <div class="wrapper-book-cards-card-txt">
+                <h3>{{ book.nom }}</h3>
+                <h4>{{ book.ovner }}</h4>
+                <p>Janr: {{ book.janr }}</p>
+                <p>narx: {{ book.narx }} so'm</p>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h1>topilmadi</h1>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
